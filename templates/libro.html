@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{dato.title}}</title>
+    
+</head>
+<body>
+    <h1>{{dato.title}}</h1>
+    <img src={{dato.thumbnailUrl}}>
+    {% if "MEAP" in dato.status %}
+        <p>Este libro no se ha publicado</p>
+        <p>El Número de Páginas es: {{dato.pageCount}}</p>
+        {% for autor in dato.authors -%}
+            <li>{{autor}}</li>
+        {% endfor %}
+    {% else %}
+        <p>El Número de Páginas es: {{dato.pageCount}}</p>
+        <h2>Autores</h2>
+            {% for autor in dato.authors -%}
+                <li>{{autor}}</li>
+            {% endfor %}
+        <h2>Categoria</h2>
+            {%for categoria in dato.categories -%}
+                <li>{{categoria}}</li>
+            {% endfor %}
+        <h2>Descripción</h2>
+            <p>{{dato.longDescription}}</p>
+    {% endif %}
+    <a href="/">Volver</a>
+    
+</body>
+</html>
