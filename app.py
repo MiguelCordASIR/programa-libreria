@@ -15,8 +15,9 @@ def libro(isbn):
     for libro in datos:
         try:
             if libro["isbn"] == isbn:
-                return render_template(dato=libro)
-       
+                return render_template("libro.html",dato=libro)
+        except:
+            return "Error 404"
 @app.route('/categoria/<categoria>')
 def categoria(categoria):
         return render_template("categoria.html",dato=datos,categoria=categoria)
